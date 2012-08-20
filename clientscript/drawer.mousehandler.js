@@ -1,13 +1,35 @@
+/**
+ * JsDraw is a small javascript application that can handle some basic drawing
+ * by the user. It's a test for learning git.
+ *
+ * @project        JsDraw
+ * @file           drawer.mousehandler.js
+ * @description    Handles the mouse event for the application
+ * @author         Benjamin Horn
+ * @version        1.0.1
+ * @link           http://www.beije.fi/post/canvas-drawer/
+ * 
+ */
 (function( Application )
 {
+	/*
+	 * Mousehandler()
+	 *
+	 */
 	Application.mousehandler = new function()
 	{
-		this.mouseposition = { x:0, y:0 };
-		this.drawcoordinates = { from:{ x:0,y:0 }, to:{ x:0, y:0 } };
-		this._drawing = false;
-		this._usefollowdraw = false;
-		this._followdraw = false;
-		
+		this.mouseposition = { x:0, y:0 };								// Holds the latest captured mouse positions
+		this.drawcoordinates = { from:{ x:0,y:0 }, to:{ x:0, y:0 } };	// The coordinates between the line beg. and end
+		this._drawing = false;											// If we're currently drawing something
+		this._usefollowdraw = false;									// If we should use follow draw
+		this._followdraw = false;										// If followdraw is currently active(?)
+						
+		/*
+		 * function _initialize()
+		 *
+		 * Initializes the object
+		 *
+		 */
 		this._initialize = function()
 		{
 			if( !Application.canvas )
@@ -18,6 +40,7 @@
 		
 			Application.mousecanvas.style.cursor = 'crosshair';
 		
+			// Bind events to the canvas element
 			add_event( Application.mousecanvas, 'mousemove', 
 				function( e )
 				{ 
@@ -50,6 +73,17 @@
 			);
 			
 		};
+		
+		/*
+		 * Function _mousedown()
+		 *
+		 * Captures the mousedown event and register
+		 * start point for the line
+		 *
+		 * @param (event) e Window.event
+		 *
+		 * @return (void)
+		 */
 		this._mousedown = function( e )
 		{
 			var e = e || window.event;
@@ -65,6 +99,17 @@
 			this.drawcoordinates.from.y = e.layerY;
 		}		
 		
+		/*
+		 * Function _mouseup()
+		 *
+		 * Captures the mouseup event and register
+		 * the end point for the line (or stops drawing if
+		 * follow event is true)
+		 *
+		 * @param (event) e Window.event
+		 *
+		 * @return (void)
+		 */
 		this._mouseup = function( e )
 		{
 			var e = e || window.event;
@@ -88,6 +133,18 @@
 			}
 		}
 		
+		/*
+		 * Function _updatemouseposition()
+		 *
+		 * Captures the mousemove event and registers
+		 * the current mouse position. If follow draw
+		 * is true then the application is drawing
+		 * continously as the mouse moves.
+		 *
+		 * @param (event) e Window.event
+		 *
+		 * @return (void)
+		 */
 		this._updatemouseposition = function( e )
 		{
 			var e = e || window.event;
@@ -121,6 +178,16 @@
 			}
 		}
 		
+		/*
+		 * Function _mouseout()
+		 *
+		 * Captures the mouseout event and cancels
+		 * any current drawing event.
+		 *
+		 * @param (event) e Window.event
+		 *
+		 * @return (void)
+		 */
 		this._mouseout = function( e )
 		{
 			if( this._drawing === false ) return false;
@@ -129,11 +196,25 @@
 			this._drawing = false;
 		}
 		
+		/*
+		 * Function toString()
+		 *
+		 * returns object as string
+		 *
+		 * @return String
+		 */
 		this.toString = function()
 		{
 			return '[object DrawerMouseHandler]';
 		}
 		
+		/*
+		 * Function togglefollowdraw()
+		 *
+		 * Toggles the follow draw
+		 *
+		 * @return (boolean) current status of follow draw
+		 */
 		this.togglefollowdraw = function()
 		{
 			if( this._usefollowdraw === false )
@@ -145,8 +226,6 @@
 			this._usefollowdraw = false;
 			return false;
 		}
-
-		this.lol = function(){};
 	}
 
 })( Drawer );

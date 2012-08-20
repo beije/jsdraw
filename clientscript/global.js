@@ -1,20 +1,40 @@
-function getbyid( elm )
+/*
+ * Function getbyid()
+ *
+ * Shorthand function for document.getElementById()
+ *
+ * @param (String) id	ID of the element
+ *
+ * @return (Mixed (DOM object|Boolean))
+ */
+function getbyid( id )
 {
-	return document.getElementById( elm );
+	return document.getElementById( id );
 }
 
+
+/*
+ * Function add_event()
+ *
+ * Adds an eventhandler/listener to an object
+ *
+ * @param (Object) 		obj 		Object that we want to bind the event
+ * @param (String) 		type 		What kind of event
+ * @param (Function) 	event 		Function to be called on event
+ * @param (Boolean) 	usecapture	Wheter to capture the event in bubbling
+ *
+ * @return (boolena) false
+ */ 
 function add_event( obj, type, event, usecapture )
 {
 	usecapture = ( usecapture ? usecapture : false );
 	
 	if( obj.addEventListener )
 	{
-		// For chrome, safari, firefox, opera, internet explorer 9
 		obj.addEventListener( type , event , usecapture);
 	}
 	else
 	{
-		// For internet explorer 8 and older
 		obj.attachEvent('on'+type, event );
 	}
 
