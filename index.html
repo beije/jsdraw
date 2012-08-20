@@ -1,0 +1,27 @@
+<html>
+	<head>	
+		<script type="text/javascript" src="clientscript/global.js"></script>
+		<script type="text/javascript" src="clientscript/drawer.js"></script>
+		<script type="text/javascript" src="clientscript/drawer.core.js"></script>
+		<script type="text/javascript" src="clientscript/drawer.mousehandler.js"></script>
+		<script type="text/javascript" src="clientscript/drawer.painter.js"></script>
+	</head>
+	<body>
+		
+		<canvas id="pagecanvas" style="border:1px solid #2d2d2d;" width="400" height="200"></canvas>
+		<br />
+		<input type="submit" value="Style 1" onclick="Drawer.setstyle( { strokeStyle:'rgba(0,0,0,1)', lineWidth:2 } );" />
+		<input type="submit" value="Style 2" onclick="Drawer.setstyle( { strokeStyle:'rgba(255,0,0,1)', lineWidth:1 } );" />
+		<input type="submit" value="Style 3" onclick="Drawer.setstyle( { strokeStyle:'rgba(255,255,0,1)', lineWidth:4 } );" />
+		<input type="submit" value="Style 4" onclick="Drawer.setstyle( { strokeStyle:'rgba(255,0,255,1)', lineWidth:5 } );" />
+		<input type="submit" value="Style 5" onclick="Drawer.setstyle( { strokeStyle:'rgba(0,255,0,1)', lineWidth:1 } );" />
+		<input type="submit" value="White 5" onclick="Drawer.setstyle( { strokeStyle:'rgba(255,255,255,1)', lineWidth:5 } );" />
+		<br />
+		<input type="submit" value="Toggle free draw" onclick="Drawer.mousehandler.togglefollowdraw();" />
+		
+		<script type="text/javascript">
+
+		</script>
+	
+	</body>
+</html>
