@@ -1,3 +1,8 @@
+function getbyid( elm )
+{
+	return document.getElementById( elm );
+}
+
 function add_event( obj, type, event, usecapture )
 {
 	usecapture = ( usecapture ? usecapture : false );

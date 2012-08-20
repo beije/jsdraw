@@ -1,23 +1,27 @@
 <html>
-	<head>	
+	<head>
+		<title>JsDraw</title>
 		<script type="text/javascript" src="clientscript/global.js"></script>
 		<script type="text/javascript" src="clientscript/drawer.js"></script>
 		<script type="text/javascript" src="clientscript/drawer.core.js"></script>
 		<script type="text/javascript" src="clientscript/drawer.mousehandler.js"></script>
 		<script type="text/javascript" src="clientscript/drawer.painter.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/global.css">
+
 	</head>
 	<body>
-		
-		<canvas id="pagecanvas" style="border:1px solid #2d2d2d;" width="400" height="200"></canvas>
-		<br />
-		<input id="style1" type="submit" value="Style 1" />
-		<input id="style2" type="submit" value="Style 2" />
-		<input id="style3" type="submit" value="Style 3" />
-		<input id="style4" type="submit" value="Style 4" />
-		<input id="style5" type="submit" value="White 5" />
-		<br />
-		<input id="free" value="Toggle free draw" />
-		
+		<div class="wrapper">
+			<canvas id="pagecanvas" class="drawboard" width="400" height="200"></canvas>
+			<div class="controls">
+				<a id="style1" href="#" class="style-changer">Style 1</a>
+				<a id="style2" href="#" class="style-changer">Style 2</a>
+				<a id="style3" href="#" class="style-changer">Style 3</a>
+				<a id="style4" href="#" class="style-changer">Style 4</a>
+				<a id="style5" href="#" class="style-changer">Style 5</a>
+				<a id="free" href="#" class="style-changer freedraw">Toggle</a>
+				<div class="clear"></div>
+			</div>
+		</div>
 		<script type="text/javascript" src="clientscript/style.events.js"></script>
 	</body>
 </html>
